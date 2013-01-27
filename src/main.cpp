@@ -28,6 +28,8 @@
  
 //Graphics calls
 #include "Rendering\osg_Root.h"
+#include "Rendering\osg_Object.h"
+
 #include "leastsquaresquat.h"
 
 //Transforms
@@ -51,8 +53,8 @@
 #include <deque>
 #include <assert.h>
 
-#include "src\UserConstant.h"
-#include "src\constant.h"
+#include "UserConstant.h"
+#include "constant.h"
 
 const int MAX_FPS = 100;
 
@@ -131,10 +133,10 @@ std::vector <CvPoint>	cont_center;
 
 #if CAR_SIMULATION == 1
 //Graphical objects
-osg::Quat CarsOrientation[NUMBER_CAR];
-osg::Quat WheelsOrientaion[NUMBER_CAR][NUM_WHEEL];
-osg::Vec3d CarsPosition[NUMBER_CAR];
-osg::Vec3d WheelsPosition[NUMBER_CAR][NUM_WHEEL];
+osg::Quat CarsOrientation[NUM_CARS];
+osg::Quat WheelsOrientaion[NUM_CARS][NUM_WHEELS];
+osg::Vec3d CarsPosition[NUM_CARS];
+osg::Vec3d WheelsPosition[NUM_CARS][NUM_WHEELS];
 #endif /* CAR_SIMULATION == 1 */
 
 int input_key;
@@ -181,7 +183,6 @@ double previous_time = 0.0;
 int    count_frame   = 0;
 deque<double> fps;
 double time_spent    = 0.0;
-const float img_ratio = CAPTURE_SIZE.width / SKIN_X;
 /////////////////////
 
 namespace{
@@ -391,8 +392,8 @@ int main(int argc, char* argv[])
 
 		depthIm = cvCreateImage(cvSize(niDepthMD.XRes(), niDepthMD.YRes()), IPL_DEPTH_16U, 1);
 		transDepth160 = cvCreateImage(cvSize(MESH_SIZE.width, MESH_SIZE.height), IPL_DEPTH_32F, 1);
-		transDepth320 = cvCreateImage(cvSize(SKIN_SEGM_SIZE.width, SKIN_SEGM_SIZE.height), IPL_DEPTH_32F, 1);
-		transColor320 = cvCreateImage(cvSize(SKIN_SEGM_SIZE.width, SKIN_SEGM_SIZE.height), IPL_DEPTH_8U, 3);
+		transDepth320 = cvCreateImage(cvSize(ARMM::ConstParams::SKIN_X, ARMM::ConstParams::SKIN_Y), IPL_DEPTH_32F, 1);
+		transColor320 = cvCreateImage(cvSize(ARMM::ConstParams::SKIN_X, ARMM::ConstParams::SKIN_Y), IPL_DEPTH_8U, 3);
 		memcpy(depthIm->imageData, niDepthMD.Data(), depthIm->imageSize);	
 		//cvCircle(colourIm, cvPoint(marker_origin.x,marker_origin.y), 5, CV_BLUE, 3);
 #ifdef SHOWKINECTIMG
@@ -402,7 +403,7 @@ int main(int argc, char* argv[])
 		cvWaitKey(1); 
 
 		//check input device
-		input_key = kc->check_input();
+		input_key = kc->check_input(pOsgRoot);
 		ExecuteAction(input_key);
 
 		//xc->check_input();
@@ -548,8 +549,9 @@ void RenderScene(IplImage *arImage, Capture *capture)
 
 	std::vector <osg::Quat> quat_obj_array;
 	std::vector <osg::Vec3d> vect_obj_array;
-
-	if(Virtual_Objects_Count > 0) 
+	
+	const int num_of_objects = pOsgRoot->mOsgObject->getVirtualObjectsCount();
+	if(num_of_objects > 0) 
 	{
 		if(!objVectorDeletable.empty())
 		{
@@ -571,7 +573,7 @@ void RenderScene(IplImage *arImage, Capture *capture)
 			cout << "create the soft body object" << endl;
 		}
 
-		for(int i = 0; i < Virtual_Objects_Count; i++) 
+		for(int i = 0; i < num_of_objects; i++) 
 		{
 			btTransform trans2 = m_world->get_Object_Transform(i);
 			btQuaternion quat2 = trans2.getRotation();

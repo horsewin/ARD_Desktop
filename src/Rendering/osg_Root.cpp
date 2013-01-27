@@ -5,9 +5,9 @@
  *      Author: umakatsu
  */
 
-#include "src\Rendering\osg_Root.h"
-#include "src\Rendering\osg_Object.h"
-#include "src\Rendering\osg_Init.h"
+#include "Rendering\osg_Root.h"
+#include "Rendering\osg_Object.h"
+#include "Rendering\osg_Init.h"
 
 extern const int NUMBER_CAR;
 extern const float MIN_HAND_PIX;
@@ -729,3 +729,9 @@ void osg_Root::CreateGround()
 {
 	mOsgInit->CreateHeightfield(mOsgObject);
 }
+
+void osg_Root::SetAddArModel(const bool & b){ mAddArModel = b; }
+void osg_Root::SetARInputButton(const int & input){ mOsgArInputButton = input; }
+int  osg_Root::GetARInputButton(void) const { return mOsgArInputButton; }
+void osg_Root::SetARAddModelButtton(const int & input){ mosgArAddModelButton = input; }
+int  osg_Root::GetARModelButton(void) const { return mosgArAddModelButton;}

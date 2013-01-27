@@ -5,10 +5,10 @@
  *      Author: umakatsu
  */
 
-#include "src\Rendering\osg_Init.h"
-#include "src\Rendering\osg_Object.h"
+#include "Rendering\osg_Init.h"
+#include "Rendering\osg_Object.h"
 
-#include "src\UserConstant.h"
+#include "UserConstant.h"
 
 #include <osgDB/ReadFile>
 

@@ -85,7 +85,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(Boost_DIR)/include;$(LIB3DS)\src;$(OPENCV_2_1)\include\opencv;$(OPENCV_2_1)\include;$(ARMM)\src\Skin_Col_Segment;$(VRPN);$(OPIRA)\include;$(OPEN_NI_INCLUDE);$(OSG)\include;$(BULLET_INCLUDE_DIR);$(OSGBULLET_INCLUDE_DIR);$(OSGWORKS_INCLUDE_DIR);$(ARMM);$(ARMM_NHI_SHARED_INC_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Frontier2\Documents\research\ARD_Desktop\src\include;$(Boost_DIR)/include;$(LIB3DS)\src;$(OPENCV_2_1)\include\opencv;$(OPENCV_2_1)\include;$(ARMM)\src\Skin_Col_Segment;$(VRPN);$(OPIRA)\include;$(OPEN_NI_INCLUDE);$(OSG)\include;$(BULLET_INCLUDE_DIR);$(OSGBULLET_INCLUDE_DIR);$(OSGWORKS_INCLUDE_DIR);$(ARMM);$(ARMM_NHI_SHARED_INC_DIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -174,7 +174,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Dropbox\Lab\ShareProc\include\ARMM\Rendering\osg_Menu.h" />
-    <ClInclude Include="src\constant.h" />
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\MyShadowMap.h" />
     <ClInclude Include="src\Network\Communicator.h" />

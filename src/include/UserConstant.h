@@ -36,8 +36,6 @@
 #define CAPTURE_SIZE cvSize(640,480)
 #define REGISTRATION_SIZE cvSize(320,240)
 #define MESH_SIZE cvSize(160,120)
-#define OPFLOW_SIZE cvSize(SKIN_X,SKIN_X)
-#define SKIN_SEGM_SIZE cvSize(SKIN_X,SKIN_Y)
 #define CV_RED cvScalar(255,0,0)
 #define CV_GREEN cvScalar(0,255,0)
 #define CV_BLUE cvScalar(0,0,255)

@@ -40,7 +40,7 @@
 //#include "osg_geom_data.h"
 #include "ARMM\Rendering\osg_Menu.h"
 
-#include "UserConstant.h"
+#include "src\UserConstant.h"
 
 #include <boost\shared_ptr.hpp>
 
@@ -238,11 +238,11 @@ public:
 	void ModelButtonAnimation();
 	void ResetModelButtonPos();
 
-	void SetAddArModel(const bool & b);
-	void SetARInputButton(const int & input);
-	int  GetARInputButton(void) const;
-	void SetARAddModelButtton(const int & input);
-	int  GetARModelButton(void) const;
+	void SetAddArModel(const bool & b){ mAddArModel = b; }
+	void SetARInputButton(const int & input){ mOsgArInputButton = input; }
+	int  GetARInputButton(void) const { return mOsgArInputButton; }
+	void SetARAddModelButtton(const int & input){ mosgArAddModelButton = input; }
+	int  GetARModelButton(void) const { return mosgArAddModelButton;}
 
 private:
 	osg::Drawable* createSquare(const osg::Vec3& corner,const osg::Vec3& width,const osg::Vec3& height, osg::Image* image=NULL);

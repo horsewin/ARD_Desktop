@@ -116,7 +116,7 @@ public:
 
 		std::vector< boost::shared_ptr<btDefaultMotionState> >	chassisMotionState;
 		std::vector< boost::shared_ptr<btRigidBody> >			m_carChassis;
-		btRaycastVehicle::btVehicleTuning						m_tuning[NUM_CARS];
+		btRaycastVehicle::btVehicleTuning						m_tuning[NUMBER_CAR];
 		std::vector< boost::shared_ptr<btVehicleRaycaster> >	m_vehicleRayCaster;
 		std::vector< boost::shared_ptr<btRaycastVehicle> >		m_vehicle;
 		std::vector< boost::shared_ptr<btCollisionShape> >		m_wheelShape;
@@ -220,10 +220,10 @@ public:
 		int upIndex;
 		int forwardIndex;
 		//
-		btVector3 wheelDirectionCS0[NUM_CARS];
-		btVector3 wheelAxleCS[NUM_CARS];
-		btScalar suspensionRestLength[NUM_CARS];
-		Car Car_Array[NUM_CARS];
+		btVector3 wheelDirectionCS0[NUMBER_CAR];
+		btVector3 wheelAxleCS[NUMBER_CAR];
+		btScalar suspensionRestLength[NUMBER_CAR];
+		Car Car_Array[NUMBER_CAR];
 		float	worldDepth;
 		float	world_scale;
 

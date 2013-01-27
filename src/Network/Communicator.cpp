@@ -12,10 +12,10 @@
 // Global
 //---------------------------------------------------------------------------
 #if CAR_SIMULATION == 1
-extern osg::Quat CarsOrientation[NUMBER_CAR];
-extern osg::Quat WheelsOrientaion[NUMBER_CAR][NUM_WHEEL];
-extern osg::Vec3d CarsPosition[NUMBER_CAR];
-extern osg::Vec3d WheelsPosition[NUMBER_CAR][NUM_WHEEL];
+extern osg::Quat CarsOrientation[NUM_CARS];
+extern osg::Quat WheelsOrientaion[NUM_CARS][NUM_WHEELS];
+extern osg::Vec3d CarsPosition[NUM_CARS];
+extern osg::Vec3d WheelsPosition[NUM_CARS][NUM_WHEELS];
 #endif /* CAR_SIMULATION == 1 */
 
 extern int input_key;
@@ -42,7 +42,7 @@ const int HANDS_BUFFER = 3000;
 ARMM_Communicator::ARMM_Communicator( vrpn_Connection_IP *c) :
 vrpn_Tracker( "ARMM_Comm", c ) 
 {
-	num_sensors = NUMBER_CAR*NUM_WHEEL+NUMBER_CAR;
+	num_sensors = NUM_CARS*NUM_WHEELS+NUM_CARS;
 	register_types();
 
 	// initialize the hand position
@@ -120,7 +120,7 @@ void ARMM_Communicator::mainloop()
 	if( mDataType == REGULAR)
 	{
 		//----->Set the number of sending data
-		const int CAR_PARAM       = NUMBER_CAR*NUM_WHEEL+NUMBER_CAR;
+		const int CAR_PARAM       = NUM_CARS*NUM_WHEELS+NUM_CARS;
 		const int COLLISION_PARAM = CAR_PARAM + 1;  
 		const int object_num = static_cast<vrpn_int32>( (*m_objects_body).size() ); 
 		int hands_num  = (*m_hands_body).size();

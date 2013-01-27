@@ -31,8 +31,8 @@
 #include <boost\shared_ptr.hpp>
 
 //User definition
-#include "UserConstant.h"
-#include "Physics\bt_ARMM_hand.h"
+#include "src\UserConstant.h"
+#include "../Physics/bt_ARMM_hand.h"
 
 enum datatype{REGULAR, SOFTBODY};
 
